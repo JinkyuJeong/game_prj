@@ -27,8 +27,8 @@
 }
 
 #space {
-  border: 2px solid green;
-  box-shadow: 3px 3px 30px black;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   width: 23vw;
   height: 50vh;
   background-color: rgba(211,211,211,0.5);
@@ -43,7 +43,7 @@
 
 #input_answer {
   flex-basis:7vh ;
-  border-top: 2px solid green;
+  border-top: 1px solid black;
   vertical-align: middle;
   display: flex;
   align-items: center;
