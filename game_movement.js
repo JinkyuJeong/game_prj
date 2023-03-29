@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   const chatButton = document.querySelector("#gg");
   const ul = document.querySelector("#view");
   const sysMessage = document.querySelector("#sys_text");
+  const sysWinLose = document.querySelector("#winlose");
   const sysNum = [];
   let timer;
   let cnt;
@@ -17,6 +18,10 @@ document.addEventListener("DOMContentLoaded",()=>{
   startButton.addEventListener("click",()=>{
     input.placeholder = "";
     removeLi(); 
+
+    startButton.disabled = true;
+   
+    sysWinLose.style.display = "none";
 
     createLi("3초 뒤 게임시작...");
     createLi("[SYSTEM] : 숫자좀 생각하고 있을게요.",false,true);
@@ -88,10 +93,13 @@ document.addEventListener("DOMContentLoaded",()=>{
           clearInterval(timer);
           createLi("[SYSTEM] : 제가 졌습니다. ㅠㅠ",false,true);
           sysMessage.textContent = "[SYSTEM] : 제가 졌습니다. ㅠㅠ";
+          sysWinLose.textContent = "LOSE";
+          sysWinLose.style.display = "block";
           input.value = "";
           input.disabled = true;
           input.placeholder = "게임종료";
           chatButton.disabled = true;
+          startButton.disabled = false;
           return;
         }else{
           createLi("[SYSTEM] : " + strike + "스트라이크 " + ball + "볼",false,true);
@@ -100,7 +108,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       }
     }else{
       createLi("[운영자] : 숫자 3개만 입력하세요.",true);
-      sysMessage.textContent = "USER님 정확한 값을 입력해주세요."
+      sysMessage.textContent = "[SYSTEM] : USER님 정확한 값을 입력해주세요."
     }
     input.value = "";
   }
@@ -112,8 +120,8 @@ document.addEventListener("DOMContentLoaded",()=>{
         second.style.color = "red";
         second.style.fontSize = "40px";
         second.style.bottom = "-5px";
-        second.textContent = --cnt+1;
-        createLi("[운영자] : " + cnt+"초 남았습니다.",false, false, true);
+        second.textContent = --cnt;
+        createLi("[운영자] : " + (cnt+1)+"초 남았습니다.",false, false, true);
         sysMessage.textContent = "[SYSTEM] : 10초만 지나면 저의 승리";
       }else if(cnt==0){
         clearInterval(timer);
@@ -121,9 +129,12 @@ document.addEventListener("DOMContentLoaded",()=>{
         createLi("[SYSTEM] : 제가 이겼습니다. 개꿀~ 답은 " + sysNum.toString(),false,true);
         input.value = "";
         sysMessage.textContent = "[SYSTEM] : 제가 이겼습니다. 개꿀~";
+        sysWinLose.textContent = "LOSE";
+        sysWinLose.style.display = "block";
         input.disabled = true;
         input.placeholder = "게임종료";
         chatButton.disabled = true;
+        startButton.disabled = false;
       }else if (cnt != 60 && cnt%30 == 0){
         createLi("[운영자] : " + cnt+"초 남았습니다.",false, false, true);
         second.textContent = --cnt;

@@ -27,7 +27,8 @@
 }
 
 #space {
-  border: 2px solid black;
+  border: 2px solid green;
+  box-shadow: 3px 3px 30px black;
   width: 23vw;
   height: 50vh;
   background-color: rgba(211,211,211,0.5);
@@ -42,7 +43,7 @@
 
 #input_answer {
   flex-basis:7vh ;
-  border-top: 2px solid black;
+  border-top: 4px solid green;
   vertical-align: middle;
   display: flex;
   align-items: center;
@@ -94,4 +95,14 @@ input[type="text"] {
   font-weight: bold;
   font-size: 30px;
   margin-top: 10px;
+}
+
+#winlose{
+  position: absolute;
+  font-size: 10vw;
+  right : 18vW;
+  font-family: 'Edu NSW ACT Foundation', cursive;
+  text-shadow: 3px 3px 15px black;
+  color: gold;
+  display: none;
 }

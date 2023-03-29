@@ -13,6 +13,8 @@ button{
   box-shadow: 3px 3px 25px 1px;
   font-size: 30px;
   font-weight: bold;
-  background-color: white;
+  background-color: black;
+  color: white;
+  text-shadow: 1px 1px 5px white;
   cursor: pointer;
 }
