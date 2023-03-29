@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     removeLi(); 
 
     startButton.disabled = true;
-   
+  
     sysWinLose.style.display = "none";
 
     createLi("3초 뒤 게임시작...");
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         createLi("[SYSTEM] : 제가 이겼습니다. 개꿀~ 답은 " + sysNum.toString(),false,true);
         input.value = "";
         sysMessage.textContent = "[SYSTEM] : 제가 이겼습니다. 개꿀~";
-        sysWinLose.textContent = "LOSE";
+        sysWinLose.textContent = "WIN";
         sysWinLose.style.display = "block";
         input.disabled = true;
         input.placeholder = "게임종료";

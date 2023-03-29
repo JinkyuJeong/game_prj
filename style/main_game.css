@@ -43,7 +43,7 @@
 
 #input_answer {
   flex-basis:7vh ;
-  border-top: 4px solid green;
+  border-top: 2px solid green;
   vertical-align: middle;
   display: flex;
   align-items: center;
