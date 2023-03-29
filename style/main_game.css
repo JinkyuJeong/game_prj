@@ -1,0 +1,97 @@
+#main_game{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+/* 사용자 답변영역 */
+#answer_sapce {
+  display: flex;
+  flex-direction: column;
+}
+
+#time {
+  font-family: 'Malgun Gothic', 'Apple Gothic', 'Segoe UI', Dotum, '돋움', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  margin-bottom: 5px;
+  flex-basis: 20px;
+}
+
+#second {
+  position: absolute;
+  left : 100px;
+  bottom: 0;
+}
+
+#space {
+  border: 2px solid black;
+  width: 23vw;
+  height: 50vh;
+  background-color: rgba(211,211,211,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+#input_text {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+#input_answer {
+  flex-basis:7vh ;
+  border-top: 2px solid black;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  display:block;
+  width: 10vw;
+  height: 3vh;
+  border: 2px solid black;
+  margin: 10px 5px 10px 5px;
+  flex-grow: 1;
+}
+
+#gg {
+  all : unset;
+  display:block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../image/button.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* 시스템 힌트 영역 */
+#white_space {
+  flex-basis: 15vw;
+  text-align: center;
+}
+
+/* 시스템 이미지 영역 */
+#answer_system{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#answer_system>img {
+  width: 25vw;
+  height: 50vh;
+}
+
+#sysname {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 10px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숫자야구게임</title>
+  <link rel="shortcut icon" href="./image/ball.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./game_style.css">
+  <script src="./game_movement.js"></script>
+</head>
+<body>
+  <div id="container_space">
+
+    <div id="header_title">
+      <div id="logo">
+        <img id="ball" src="./image/ball.png" alt="야구공">
+      </div>
+      <div id="title">
+        <h1 >숫자야구</h1>
+      </div>
+    </div>
+
+    <div id="main_game">
+      <div id="answer_sapce">
+        <div id="time">제한시간 : <div id="second"></div></div>
+        <div id="space">
+          <div id="input_text">
+            <ul id="view">
+            </ul>
+          </div>
+          <div id="input_answer">
+            <input id="hh" type="text">
+            <button id="gg" type="submit"></button>
+          </div>
+        </div>
+      </div>
+
+      <div id="white_space">
+        <div id="bubble">
+          <p id="sys_text"></p>
+        </div>
+        <div>
+          <img id="vsimg" src="./image/vs.png" alt="vs이미지" width="100px">
+        </div>
+      </div>
+
+      <div id="answer_system">
+        <img src="./image/baseball.png" alt="">
+        <div id="sysname">&lt SYSTEM &gt</div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <div><button id="start" type="submit">시작</button></div>
+      <div id="production">
+        제작자 : 구디아카데미 62기 정진규
+      </div>
+    </div> 
+  </div>
+
+</body>
+</html>

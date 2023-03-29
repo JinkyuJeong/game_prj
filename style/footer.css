@@ -1,0 +1,18 @@
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+button{
+  width: 10vw;
+  height: 10vh;
+  margin: 20px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 25px 1px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: white;
+  cursor: pointer;
+}

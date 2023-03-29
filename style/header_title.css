@@ -1,0 +1,68 @@
+#header_title {
+  text-align: center;
+  vertical-align: bottom;
+  font-family: 'Edu NSW ACT Foundation', cursive;
+  display: flex;
+  justify-content: center;
+}
+
+#logo{
+  padding-top: 20px;
+  vertical-align: middle;
+  position: relative;
+}
+
+/* 짙고 옅어지는 애니메이션 */
+@keyframes logo-shadow {
+  from { opacity: 0.12; }
+  to { opacity: 0.53; }
+}
+
+/* 로고 아래 그림자 */
+#logo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 10%;
+  background-color: black;
+  border-radius: 50%;
+  left: calc(50% - 30px);
+  bottom: -10px;
+  width: 60px;
+  animation-name: logo-shadow;
+  animation-duration: 900ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#logo>img {
+  width: 60px;
+  height: 60px;
+  display: inline;
+}
+
+/* 둥둥 오르내리는 효과 */
+@keyframes logo-hover {
+  from { transform: translateY(0); }
+  to { transform: translateY(7px); }
+}
+#ball{
+  animation-name: logo-hover;
+  animation-duration: 900ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#title {
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#title>h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 7px 7px 25px;
+  padding-top: 35px;
+}
