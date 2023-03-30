@@ -6,9 +6,13 @@ document.addEventListener("DOMContentLoaded",()=>{
   const ul = document.querySelector("#view");
   const sysMessage = document.querySelector("#sys_text");
   const sysWinLose = document.querySelector("#winlose");
+  const second = document.querySelector("#second");
+  const mSecond = document.querySelector("#mSecond");
   const sysNum = [];
   let timer;
+  let mTimer;
   let cnt;
+  let mCnt;
   
   sysMessage.textContent = "[SYSTEM] : 안녕하세요 SYSTEM입니다.";
   input.disabled = true;
@@ -27,14 +31,19 @@ document.addEventListener("DOMContentLoaded",()=>{
     createLi("[SYSTEM] : 숫자좀 생각하고 있을게요.",false,true);
     sysMessage.textContent = "[SYSTEM] : 숫자좀 생각하고 있을게요"; 
 
-    cnt = 60;  
-    const second = document.querySelector("#second");
+    cnt = 60;
+    mCnt = 0;  
     second.style.color = "black";
     second.style.fontSize = "20px";
     second.style.bottom = "0";
     second.textContent = cnt;
+    mSecond.style.color = "black";
+    mSecond.style.fontSize = "20px";
+    mSecond.style.bottom = "0";
+    mSecond.textContent = ": " +mCnt.toString().padStart(2, "0");
 
     clearInterval(timer);
+    clearInterval(mTimer);
 
     let readyCnt = 3;
     const ready = setInterval(()=>{
@@ -47,6 +56,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         chatButton.disabled = false; 
         createLi("[SYSTEM] : 숫자 3개 생각 완료 ㅎㅎ 답을 맞춰보시죠",false,true);
         sysMessage.textContent = "[SYSTEM] : 숫자 3개 생각 완료 ㅎㅎ 답을 맞춰보시죠"; 
+        createLi(sysNum)
         startTimer();
       }
     },1000);
@@ -66,7 +76,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   const chatAnswer = function() {
     const text = input.value;
     createLi("[USER] : "+ text);
-    const num = parseInt(text);
+    const num = Number(text);
 
     if((123<=num && num<=987)){
       if(isDuplicate(num)){
@@ -90,16 +100,12 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         if(strike === 3){
           createLi("[운영자] : 정답. USER 승리 (기록 : " + (60-cnt) + "초)",false,false,true);
-          clearInterval(timer);
           createLi("[SYSTEM] : 제가 졌습니다. ㅠㅠ",false,true);
           sysMessage.textContent = "[SYSTEM] : 제가 졌습니다. ㅠㅠ";
           sysWinLose.textContent = "LOSE";
-          sysWinLose.style.display = "block";
-          input.value = "";
-          input.disabled = true;
-          input.placeholder = "게임종료";
-          chatButton.disabled = true;
-          startButton.disabled = false;
+          clearInterval(timer);
+          clearInterval(mTimer);
+          gameOff();
           return;
         }else{
           createLi("[SYSTEM] : " + strike + "스트라이크 " + ball + "볼",false,true);
@@ -112,29 +118,40 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     input.value = "";
   }
-
+  
   // 숫자게임 타이머함수
   const startTimer = function(){
+    mCnt = 100;
+    mTimer = setInterval(() => {
+      --mCnt;
+      if (mCnt == 0){
+        if(cnt==0)
+          clearInterval(mTimer);
+        mCnt = 100;
+      } 
+      mSecond.textContent = ": "+ mCnt.toString().padStart(2, "0");
+    }, 10);
     timer = setInterval(()=>{
       if(cnt==10){
         second.style.color = "red";
         second.style.fontSize = "40px";
         second.style.bottom = "-5px";
+        mSecond.style.color = "red";
+        mSecond.style.fontSize = "40px";
+        mSecond.style.bottom = "-5px";
         second.textContent = --cnt;
         createLi("[운영자] : " + (cnt+1)+"초 남았습니다.",false, false, true);
         sysMessage.textContent = "[SYSTEM] : 10초만 지나면 저의 승리";
       }else if(cnt==0){
         clearInterval(timer);
+        clearInterval(mTimer);
         createLi("[운영자] : 시간초과. SYSTEM 승리",false,false,true);
         createLi("[SYSTEM] : 제가 이겼습니다. 개꿀~ 답은 " + sysNum.toString(),false,true);
-        input.value = "";
+        mCnt=0;
+        mSecond.textContent = ": " +mCnt.toString().padStart(2, "0");
         sysMessage.textContent = "[SYSTEM] : 제가 이겼습니다. 개꿀~";
         sysWinLose.textContent = "WIN";
-        sysWinLose.style.display = "block";
-        input.disabled = true;
-        input.placeholder = "게임종료";
-        chatButton.disabled = true;
-        startButton.disabled = false;
+        gameOff();
       }else if (cnt != 60 && cnt%30 == 0){
         createLi("[운영자] : " + cnt+"초 남았습니다.",false, false, true);
         second.textContent = --cnt;
@@ -196,5 +213,15 @@ document.addEventListener("DOMContentLoaded",()=>{
     const digits = String(n).split('');
     return digits[0] === "0" || digits[1] === "0" 
             || digits[2] === "0";
+  }
+
+  // 게임종료시 여러 속성 disabled
+  function gameOff(){
+    input.value = "";
+    input.disabled = true;
+    input.placeholder = "게임종료";
+    sysWinLose.style.display = "block";
+    chatButton.disabled = true;
+    startButton.disabled = false;
   }
 });
