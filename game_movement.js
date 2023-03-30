@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded",()=>{
         chatButton.disabled = false; 
         createLi("[SYSTEM] : 숫자 3개 생각 완료 ㅎㅎ 답을 맞춰보시죠",false,true);
         sysMessage.textContent = "[SYSTEM] : 숫자 3개 생각 완료 ㅎㅎ 답을 맞춰보시죠"; 
-        createLi(sysNum)
         startTimer();
       }
     },1000);
@@ -133,18 +132,15 @@ document.addEventListener("DOMContentLoaded",()=>{
     }, 10);
     timer = setInterval(()=>{
       if(cnt==10){
-        second.style.color = "red";
-        second.style.fontSize = "40px";
+        second.style.color = "red"; second.style.fontSize = "40px";
         second.style.bottom = "-5px";
-        mSecond.style.color = "red";
-        mSecond.style.fontSize = "40px";
+        mSecond.style.color = "red"; mSecond.style.fontSize = "40px";
         mSecond.style.bottom = "-5px";
         second.textContent = --cnt;
         createLi("[운영자] : " + (cnt+1)+"초 남았습니다.",false, false, true);
         sysMessage.textContent = "[SYSTEM] : 10초만 지나면 저의 승리";
       }else if(cnt==0){
-        clearInterval(timer);
-        clearInterval(mTimer);
+        clearInterval(timer); clearInterval(mTimer);
         createLi("[운영자] : 시간초과. SYSTEM 승리",false,false,true);
         createLi("[SYSTEM] : 제가 이겼습니다. 개꿀~ 답은 " + sysNum.toString(),false,true);
         mCnt=0;
