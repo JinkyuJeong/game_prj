@@ -22,7 +22,13 @@
 
 #second {
   position: absolute;
-  left : 100px;
+  left : 90px;
+  bottom: 0;
+}
+
+#mSecond {
+  position: absolute;
+  left : 120px;
   bottom: 0;
 }
 
@@ -77,6 +83,10 @@ input[type="text"] {
   text-align: center;
 }
 
+#vsimg {
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 1.0));
+}
+
 /* 시스템 이미지 영역 */
 #answer_system{
   display: flex;
@@ -88,6 +98,7 @@ input[type="text"] {
 #answer_system>img {
   width: 25vw;
   height: 50vh;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 1.0));
 }
 
 #sysname {
